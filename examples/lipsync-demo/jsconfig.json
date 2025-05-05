@@ -1,0 +1,8 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "wawa-lipsync": ["../../packages/wawa-lipsync/src"]
+    }
+  }
+}
