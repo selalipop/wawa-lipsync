@@ -1,5 +1,7 @@
-import { useEffect, useState } from "react";
-import { Visualizer } from "./demo-components/Visualizer";
+import { Canvas } from "@react-three/fiber";
+import { Suspense, useEffect, useState } from "react";
+import { Experience } from "./Experience";
+import { Visualizer } from "./Visualizer";
 
 const examples = [
   {
@@ -31,46 +33,38 @@ export const UI = () => {
   }, []);
 
   return (
-    <section className="fixed inset-0 z-10 flex flex-col pointer-events-none h-full">
-      <div className="bg-black/80 p-4 opacity-0 animate-fade-in-down animation-delay-200 flex items-center gap-16">
+    <section className="flex flex-row overflow-hidden h-full w-full">
+      <div className="p-10 max-w-2xl overflow-y-auto">
         <a
-          className="pointer-events-auto select-none"
+          className="pointer-events-auto select-none opacity-0 animate-fade-in-down animation-delay-200 "
           href="https://wawasensei.dev"
           target="_blank"
         >
           <img
-            src="/images/wawasensei-white.png"
+            src="/images/wawasensei.png"
             alt="Wawa Sensei logo"
             className="w-20 h-20 object-contain"
           />
         </a>
-        <div className="flex flex-row items-start gap-4 animation-delay-1500 animate-fade-in-down opacity-0">
-          {examples.map((example, index) => (
-            <a
-              key={index}
-              href={example.href}
-              className={`${
-                currentHash === example.href.replace("#", "")
-                  ? "text-white/80 border-b-white/80 "
-                  : "text-white/60 border-b-white/60 "
-              } text-sm font-medium pointer-events-auto select-none py-3 border-b  hover:text-white hover:border-b-white transition-all duration-200 ease-in-out`}
-            >
-              {example.label}
-            </a>
-          ))}
-        </div>
-      </div>
-      <div className="flex-1 overflow-y-auto">
         <Visualizer />
       </div>
-      <div className="top-1/2 fixed left-4 md:left-15 -translate-x-1/2 -rotate-90 flex items-center gap-4 animation-delay-1500 animate-fade-in-down opacity-0">
-        <div className="w-20 h-px bg-white/60"></div>
-        <a
-          href="https://lessons.wawasensei.dev/courses/react-three-fiber/"
-          className="text-white/60 text-xs pointer-events-auto select-none"
-        >
-          Learn Three.js & React Three Fiber
-        </a>
+      <div className="flex-1 bg-gradient-to-b from-pink-400 to-pink-200 relative">
+        <Canvas shadows camera={{ position: [12, 8, 26], fov: 30 }}>
+          <Suspense>
+            <Experience />
+          </Suspense>
+        </Canvas>
+        <div className="bg-gradient-to-b from-transparent to-black/90 absolute bottom-0 top-3/4 left-0 right-0 pointer-events-none z-10">
+          <div className="bottom-4 fixed z-20 right-4 md:right-15 flex items-center gap-4 animation-delay-1500 animate-fade-in-up opacity-0 ">
+            <div className="w-20 h-px bg-white/60"></div>
+            <a
+              href="https://lessons.wawasensei.dev/courses/react-three-fiber/"
+              className="text-white/60 text-xs pointer-events-auto select-none"
+            >
+              Learn Three.js & React Three Fiber
+            </a>
+          </div>
+        </div>
       </div>
     </section>
   );
