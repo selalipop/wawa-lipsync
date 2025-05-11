@@ -39,6 +39,14 @@ const audioFiles = [
         path: "audios/ElevenLabs_Emma_bump.mp3",
       },
       {
+        name: "Not",
+        path: "audios/ElevenLabs_Emma_not.mp3",
+      },
+      {
+        name: "Lot",
+        path: "audios/ElevenLabs_Emma_lot.mp3",
+      },
+      {
         name: "Think",
         path: "audios/ElevenLabs_Emma_think.mp3",
       },
@@ -90,6 +98,14 @@ const audioFiles = [
       {
         name: "Bump",
         path: "audios/ElevenLabs_Liam_bump.mp3",
+      },
+      {
+        name: "Not",
+        path: "audios/ElevenLabs_Liam_not.mp3",
+      },
+      {
+        name: "Lot",
+        path: "audios/ElevenLabs_Liam_lot.mp3",
       },
       {
         name: "Think",

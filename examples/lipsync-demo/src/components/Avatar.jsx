@@ -82,13 +82,22 @@ export function Avatar(props) {
     }
 
     const viseme = lipsyncManager.viseme;
-    lerpMorphTarget(viseme, 1, smoothMovements ? 0.2 : 1);
+    const state = lipsyncManager.state;
+    lerpMorphTarget(
+      viseme,
+      1,
+      smoothMovements ? (state === "vowel" ? 0.2 : 0.4) : 1
+    );
 
     Object.values(VISEMES).forEach((value) => {
       if (viseme === value) {
         return;
       }
-      lerpMorphTarget(value, 0, smoothMovements ? 0.1 : 1);
+      lerpMorphTarget(
+        value,
+        0,
+        smoothMovements ? (state === "vowel" ? 0.1 : 0.2) : 1
+      );
     });
   });
 
