@@ -3,7 +3,7 @@ import { lipsyncManager } from "../App";
 
 const audioFiles = [
   {
-    name: "Emma",
+    name: "Emma (ElevenLabs)",
     files: [
       {
         name: "A",
@@ -65,7 +65,7 @@ const audioFiles = [
     ],
   },
   {
-    name: "Liam",
+    name: "Liam (ElevenLabs)",
     files: [
       {
         name: "A",
@@ -126,11 +126,19 @@ const audioFiles = [
     ],
   },
   {
-    name: "ElevenLabs long example",
+    name: "Misc",
     files: [
       {
-        name: "#1",
+        name: "ElevenLabs long test",
         path: "audios/ElevenLabs_Text_to_Speech_audio.mp3",
+      },
+      {
+        name: "OpenAI Alloy test",
+        path: "audios/OpenAI_Alloy_test.mp3",
+      },
+      {
+        name: "OpenAI Alloy test (short)",
+        path: "audios/OpenAI_Alloy_test_short.mp3",
       },
     ],
   },
@@ -144,6 +152,16 @@ export const Visualizer = () => {
 
   const audioRef = useRef(null);
   const [audioFile, setAudioFile] = useState("");
+
+  useEffect(() => {
+    const handleAudioEnded = () => {
+      setAudioFile("");
+    };
+    audioRef.current?.addEventListener("ended", handleAudioEnded);
+    return () => {
+      audioRef.current?.removeEventListener("ended", handleAudioEnded);
+    };
+  }, []);
 
   useEffect(() => {
     if (!audioFile) {
@@ -160,7 +178,6 @@ export const Visualizer = () => {
 
     // Cleanup
     return () => {
-      console.log("Cleaning up audio");
       if (audioRef.current) {
         audioRef.current.pause();
         // Do not clear src to allow reuse

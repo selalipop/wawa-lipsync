@@ -33,8 +33,8 @@ export const UI = () => {
   }, []);
 
   return (
-    <section className="flex flex-row overflow-hidden h-full w-full">
-      <div className="p-10 max-w-2xl overflow-y-auto">
+    <section className="flex flex-col-reverse lg:flex-row overflow-hidden h-full w-full">
+      <div className="p-10 lg:max-w-2xl overflow-y-auto">
         <a
           className="pointer-events-auto select-none opacity-0 animate-fade-in-down animation-delay-200 "
           href="https://wawasensei.dev"
