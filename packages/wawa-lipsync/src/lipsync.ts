@@ -279,9 +279,11 @@ export class Lipsync {
     }
 
     // Plosives: High delta, broad centroid range
-
     Object.entries(VISEMES_STATES).forEach(([viseme, state]) => {
       if (state === FSMStates.plosive) {
+        if (dVolume < 0.01) {
+          scores[viseme as VISEMES] -= 0.5; // Possibly a fade-out
+        }
         if (avg.volume < 0.2) {
           scores[viseme as VISEMES] += 0.2;
         }
@@ -294,16 +296,16 @@ export class Lipsync {
     if (current.centroid > 1000 && current.centroid < 8000) {
       // Burst after low energy
       if (current.centroid > 7000) {
-        scores[VISEMES.DD] = 0.6;
+        scores[VISEMES.DD] += 0.6;
       } else if (current.centroid > 5000) {
-        scores[VISEMES.kk] = 0.6;
+        scores[VISEMES.kk] += 0.6;
       } else if (current.centroid > 4000) {
-        scores[VISEMES.PP] = 1;
+        scores[VISEMES.PP] += 1;
         if (b7 > 0.25 && current.centroid < 6000) {
           scores[VISEMES.DD] += 1.4;
         }
       } else {
-        scores[VISEMES.nn] = 0.6;
+        scores[VISEMES.nn] += 0.6;
       }
     }
 
