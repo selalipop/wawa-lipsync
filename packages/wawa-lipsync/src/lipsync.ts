@@ -98,6 +98,10 @@ export class Lipsync {
       return;
     }
     this.audioSource = audio;
+    if (!audio.src) {
+      console.log("An audio source must be set before connecting");
+      return;
+    }
     const source = this.audioContext.createMediaElementSource(audio);
     source.connect(this.analyser);
     this.analyser.connect(this.audioContext.destination);
