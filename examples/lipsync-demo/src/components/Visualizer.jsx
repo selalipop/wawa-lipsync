@@ -168,10 +168,10 @@ export const Visualizer = () => {
       return;
     }
     setDetectedVisemes([]);
-    lipsyncManager.connectAudio(audioRef.current);
 
     // Create or update audio element
     audioRef.current.src = audioFile; // Update source
+    lipsyncManager.connectAudio(audioRef.current);
 
     // Connect audio to lipsync
     audioRef.current.play();
