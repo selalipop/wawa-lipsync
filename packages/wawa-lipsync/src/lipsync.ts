@@ -41,11 +41,6 @@ interface Band {
   end: number;
 }
 
-interface Params {
-  fftSize?: number;
-  historySize?: number;
-}
-
 export class Lipsync {
   public features: Feature | null = null;
   public viseme: VISEMES = VISEMES.sil;
@@ -275,7 +270,7 @@ export class Lipsync {
       [VISEMES.U]: 0,
     };
 
-    const [b1, b2, b3, b4, b5, b6, b7] = current.bands;
+    const [_b1, _b2, _b3, _b4, _b5, _b6, b7] = current.bands;
 
     // Silence
     if (avg.volume < 0.2 && current.volume < 0.2) {

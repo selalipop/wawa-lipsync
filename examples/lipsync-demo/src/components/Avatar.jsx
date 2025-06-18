@@ -21,7 +21,7 @@ export function Avatar(props) {
 
   const { smoothMovements } = useControls("Avatar", {
     smoothMovements: {
-      value: false,
+      value: true,
       label: "Smooth Movements",
     },
   });
