@@ -4,7 +4,7 @@ A **simple** and **easy-to-use** library built in TypeScript for **real-time lip
 
 The examples shows how to use the library with a 3D model in Three.js with React Three Fiber.
 
-[Live demo](https://wawa-lipsync.wawasensei.dev/)
+[Live demo](https://wawa-lipsync.wawasensei.dev/) - [Video tutorial](https://youtu.be/GXU1amqvJF8)
 
 ## Installation
 
